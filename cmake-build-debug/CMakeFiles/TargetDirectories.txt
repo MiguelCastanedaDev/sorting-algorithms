@@ -1,0 +1,3 @@
+C:/Users/Miguel Castaneda/CLionProjects/sorting-algorithms/cmake-build-debug/CMakeFiles/sorting_algorithms.dir
+C:/Users/Miguel Castaneda/CLionProjects/sorting-algorithms/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Miguel Castaneda/CLionProjects/sorting-algorithms/cmake-build-debug/CMakeFiles/rebuild_cache.dir
