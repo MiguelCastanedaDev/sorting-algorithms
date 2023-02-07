@@ -1,10 +1,11 @@
-#include "menu.h"
+#include "menus.h"
+//#include "datos.h"
+#include <vector>
 
 using namespace std;
 
 int main() {
-
-    menu();
-
+    std::vector<int> data;
+    menu(data);
     return 0;
 }
