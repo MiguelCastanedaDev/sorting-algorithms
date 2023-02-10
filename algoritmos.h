@@ -61,7 +61,11 @@ void bubbleSort(std::vector<int>& data) {
     cout << "Presione la tecla enter para continuar... ";
     getch();
 
-    system("cls");
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 }
 
 void transpositionPairNones(std::vector<int>& data){
@@ -90,9 +94,16 @@ void transpositionPairNones(std::vector<int>& data){
 
         std::cout<<"N"<<k;
         std::cout<<"    ";
-        for (int i=0; i < data2.size(); i++)
+        /*for (int i=0; i < data2.size(); i++)
         {
             std::cout << data2[i] << " ";
+        }*/
+        for (int i=0; i < data2.size(); i++)
+        {
+            if (data[i] != data2[i])
+                std::cout << "\033[1;31m" << data2[i] << "\033[0m" << " ";
+            else
+                std::cout << data2[i] << " ";
         }
         std::cout<<"("<<cambiosn<<")";
         std::cout<<"\n";
@@ -109,9 +120,16 @@ void transpositionPairNones(std::vector<int>& data){
 
         std::cout<<"P"<<k;
         std::cout<<"    ";
-        for (int i=0; i < data2.size(); i++)
+        /*for (int i=0; i < data2.size(); i++)
         {
             std::cout << data2[i] << " ";
+        }*/
+        for (int i=0; i < data2.size(); i++)
+        {
+            if (data[i] != data2[i])
+                std::cout << "\033[1;34m" << data2[i] << "\033[0m" << " ";
+            else
+                std::cout << data2[i] << " ";
         }
         std::cout<<"("<<cambiosp<<")";
         std::cout<<"\n";
@@ -121,7 +139,11 @@ void transpositionPairNones(std::vector<int>& data){
     cout << "Presione la tecla enter para continuar... ";
     getch();
 
-    system("cls");
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 }
 
 void merge(std::vector<int>& data, int l, int m, int r){

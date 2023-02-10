@@ -22,6 +22,13 @@
 #include "algoritmos.h"
 #include "datos.h"
 #include "tiempo.h"
+#include "pointer.h"
+
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <ncurses.h>
+#endif
 
 #endif //SORTING_ALGORITHMS_MENU_H
 
@@ -33,10 +40,13 @@ int menu(std::vector<int>& data);
 
 void menuAlgoritmos(std::vector<int>& data){
     //showTime();
-    int opcion=0;
+    int opcion;
     char temp[10];
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     do {
-        std::cout << "\033[1;50H";
+        setup_cursor_movement();
+        (*move_cursor)(50, 1); // Usamos el puntero para mover el cursor
         cout << "Algoritmos Computacionales" << endl;
         showTime();
         std::cout << "\033[2;44H";
@@ -56,17 +66,29 @@ void menuAlgoritmos(std::vector<int>& data){
         cout<<"\n";
         switch (opcion) {
             case 1:
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 showTime();
                 bubbleSort(data);
                 break;
             case 2:
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 showTime();
                 transpositionPairNones(data);
                 break;
             case 3:
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 showTime();
                 mergeSort(data, 0, data.size() - 1);
                 cout << "Array ordenado: ";
@@ -76,17 +98,29 @@ void menuAlgoritmos(std::vector<int>& data){
                 cout << "Presione la tecla enter para continuar... ";
                 getch();
 
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 break;
             case 4:
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 data.clear();
                 menu(data);
                 break;
             default:
                 cout<<"\033[1;31mIngreso una opcion incorrecta, presione enter para volver a intentar...\033[0m";
                 getch();
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 break;
         }
     } while (opcion != 4);
@@ -101,44 +135,69 @@ int menu(std::vector<int>& data){
     //fflush(stdout);
     //cout << "\033[2;50H";
     do {
-        std::cout << "\033[1;50H";
+        setup_cursor_movement();
+        (*move_cursor)(50, 1); // Usamos el puntero para mover el cursor
         cout << "Algoritmos Computacionales" << endl;
         showTime();
-        std::cout << "\033[2;61H";
+        (*move_cursor)(60, 2); // Usamos el puntero para mover el cursor
         cout<<"Menu\n";
-        std::cout << "\033[3;50H";
+        (*move_cursor)(50, 3); // Usamos el puntero para mover el cursor
         cout<<"1. Leer Archivo\n";
-        std::cout << "\033[4;50H";
+        (*move_cursor)(50, 4); // Usamos el puntero para mover el cursor
         cout<<"2. Generar Datos\n";
-        std::cout << "\033[5;50H";
+        (*move_cursor)(50, 5); // Usamos el puntero para mover el cursor
         cout<<"3. Ingresar Datos\n";
-        std::cout << "\033[6;50H";
+        (*move_cursor)(50, 6); // Usamos el puntero para mover el cursor
         cout<<"4. Salir\n";
-        std::cout << "\033[7;50H";
+        (*move_cursor)(50, 7); // Usamos el puntero para mover el cursor
         cout<<"Ingrese su opcion: ";
         fgets(temp, 10, stdin);
         opcion = atoi(temp);
         cout<<"\n";
         switch(opcion){
             case 1:
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 showTime();
                 data = readFile(data);
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 menuAlgoritmos(data);
                 break;
             case 2:
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 showTime();
                 randomData(data);
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 menuAlgoritmos(data);
                 break;
             case 3:
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 showTime();
                 readData(data);
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 menuAlgoritmos(data);
                 break;
             case 4:
@@ -146,7 +205,11 @@ int menu(std::vector<int>& data){
             default:
                 cout<<"\033[1;31mIngreso una opcion incorrecta, presione enter para volver a intentar...\033[0m";
                 getch();
-                system("cls");
+                #ifdef _WIN32
+                                system("cls");
+                #else
+                                system("clear");
+                #endif
                 break;
         }
     } while (opcion != 4);
